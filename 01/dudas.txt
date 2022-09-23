@@ -8,3 +8,8 @@
 2) ¿Está bien la estructura del Constructor?
 
 3) ¿Está bien declarada la  instancia de la clase? 
+
+4) Si ves algo que se puede corregir, que no está bien. o simplemente algo que haga más eficiente el código, por favor, comentamelo. Es algo sencillo pero me costó mucho hacerlo, no sé porqué. 
+
+
+Gracias.
