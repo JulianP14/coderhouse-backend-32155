@@ -1,0 +1,10 @@
+1) Tuve una idea que no pude concretar. Quise crear un [] de animales, por ejemplo:
+
+        const animales = ["Perro", "Gato", "Pajaro"] 
+
+    Al cual hacerle una iteración y guardar el valor de c/ iteración para usar eso como parámetro en " addMascota() ", en vez de hacer algo tan básico como declarar 3 variables y pasarselas al " .push() ". 
+    Lo que desconozco es si esto es posible, porque probé con muchos métodos y ninguno salió como esperaba.
+
+2) ¿Está bien la estructura del Constructor?
+
+3) ¿Está bien declarada la  instancia de la clase? 
