@@ -13,3 +13,21 @@
 
 
 Gracias.
+
+
+
+. 2) No es necesario declarar un [] vacio como parametro para el Constructor. O no se declara, o se declara un nombre y se le asigna un [] vacio ( "books = []" )
+
+. 3) O lo dejo vacio  y en la declaracion de la instancia incluyo [] o le pongo books = [] y en la declaracion no le dejo los []
+
+. 1) Es mejor usar un [] de mascotas, iterarlo con un "forEach()" y a c/u de los valores del [] pasarselo como parametro a la f() "addMascota", mientras que tambien se declara la f() "user1.addMascota(mascota)" desde el []
+        
+    const mascotas = ["Perro", "Gato", "Tortuga"];
+        mascotas.forEach((mascota) => {
+            return user1.addMascota(mascota)
+        })
+
+    addMascota (mascota) {
+        this.pets.push(mascota); 
+        return this.pets;
+    }

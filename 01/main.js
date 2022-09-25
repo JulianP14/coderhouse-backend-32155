@@ -1,5 +1,5 @@
 class User {
-    constructor (name, lastName, [], []) {  // (2)
+    constructor (name, lastName, books = [], pets = []) {  // (2)
         this.name = name,
         this.lastName = lastName,
         this.books = [],
@@ -10,12 +10,12 @@ class User {
         return console.log(`Mi nombre es: ${this.name + " " + this.lastName}`)
     }
     
-    addMascota () { // (1): 
-        this.pets.push(mascota2, mascota1, mascota3); 
+    addMascota (mascota) { // (1): 
+        this.pets.push(mascota); 
         return this.pets;
     }
         countMascotas() {
-            return console.log(`Hay un total de: ${this.pets.length} mascotas en el []`)
+            return console.log(`Hay un total de: ${this.pets.length} mascotas en el []: ${this.pets}`)
         }
     
     addBook (bookData) {
@@ -31,12 +31,13 @@ class User {
     }
 }
 
-const user1 = new User ("Pepe", "Argento", [], [] ); //(3)
+const user1 = new User ("Pepe", "Argento"); //(3)
 
 // (1): 
-let mascota1 = "Perro";
-let mascota2 = "Gato";
-let mascota3 = "Tortuga";
+const mascotas = ["Perro", "Gato", "Tortuga"];
+    mascotas.forEach((mascota) => {
+        return user1.addMascota(mascota)
+    })
 
 const bookData = [
     {
