@@ -1,0 +1,12 @@
+DUDAS:
+Hola, Lean. Todavia me cuesta un poco el laburar con clases de esta manera. Pero de a poco me parece que le puedo ir agarando la mano
+
+1) Linea 73 
+    Si no recuerdo mal, si dejaba ese "if" en el codigo, el mismo se frenaba ahi, no seguia ejecutandose. Me parece raro porque en el del prof sí lo hacía.
+
+2) N/A 
+    Aparece un "undefined" cuando tiro la f() main y no lo puedo ubicar (en teoria seria en la f()3 ). Quizás ya estoy quemado, pero te dejo una foto como referencia
+    https://imgur.com/a/9VsxgJy
+
+Si ves algo que se pueda o tenga que corregir, te agradeceria mucho. 
+Saludos.
