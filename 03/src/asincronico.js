@@ -1,5 +1,5 @@
 
-/////////////////           ENTREGABLE 02          ////////////////
+/////////////////           ENTREGABLE 03          ////////////////
 const fs = require ("fs");
 const path = require ("path");
 const ruta = path.resolve( __dirname, "./main.json");
@@ -85,7 +85,7 @@ class Contenedor  {
     }   
 }
 
-const contenedor = new Contenedor ('./main.json');
+const contenedor = new Contenedor ('src/main.json');
 
 const mainFunction = async () => {
     const newFruit = {
