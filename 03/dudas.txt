@@ -1,1 +1,5 @@
 Hola Lean, te dejo aca unas dudas que tengo
+
+1. En el grupo de Whatsapp deje una foto, si la necesitas te la paso por algun lado porque no es solo la foto. Tenia unas cuestiones con respecto a la organizacion del codigo en un servidor
+2. Cuando ejecuto la f() "getProds" que me retorna el [], solo me devuelve un {} vacio en el servidor (postman) y en consola de la terminal me dice que esta esperando que se resuelva la promesa. Lo que no sabria es como resolverla para que salga el [] con los prods 
+3. En la consigna dice que trabajemos con la clase constructora Contenedor que ya vinimos usando. Mi duda es, tengo que pegarla completa con todo el codigo de la anterior en esta nueva entrega? 

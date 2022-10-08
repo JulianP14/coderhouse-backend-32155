@@ -13,20 +13,5 @@
 		"title": "Pera",
 		"price": 130,
 		"id": 3
-	},
-	{
-		"title": "Naranja",
-		"price": 200,
-		"id": 5
-	},
-	{
-		"title": "Kiwi",
-		"price": 500,
-		"id": 6
-	},
-	{
-		"title": "Sandia",
-		"price": 700,
-		"id": 7
 	}
 ]

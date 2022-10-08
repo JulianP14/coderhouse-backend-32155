@@ -7,37 +7,93 @@ const fs = require ("fs");
 const path = require ("path");
 const ruta = path.resolve( __dirname, "../main.json");
 
-const getProds = async () => {
-    try {
-        const data = await fs.promises.readFile( ruta, 'utf-8');
-        const products = JSON.parse(data);
-        return products;
-    } catch (error) {
-        throw new Error (`Error de lectura ${error}`)
+
+    const getProds = async () => {
+        try {
+            const data = await fs.promises.readFile( ruta, 'utf-8');
+            const productsArray = JSON.parse(data);
+            return productsArray;
+        } catch (error) {
+            throw new Error (`Error de lectura ${error}`)
+        }
     }
-}
+    class Contenedor  {
+        constructor ( dato ) {
+            this.dato = dato
+        }
 
-const arrayLength = () => {
-    const data = fs.promises.readFile( ruta, 'utf-8');
-    const products = JSON.parse(data);
-    return products.length;
-}
-const between = (min, max) => {
-    
-    return Math.floor(Math.random() * (max - min) + min);
-};
+        getAll = async () => {
+        const getProducts = await getProds();
+            return getProducts;
+        }
+            
+        save = async ( data ) => {
+            if(!data.title || !data.price || !isNaN(data.title) || isNaN(data.price)) {
+                throw new Error("Datos incorrectos");
+            }
+            const getProducts = await getProds();
 
-    
+            let id = 1;
+                if(getProducts.length){
+                    id = getProducts[getProducts.length-1].id +1
+                }
 
+            const prodNuevo = {
+                title: data.title,
+                price: data.price,
+                id: id
+            }
+            
+            getProducts.push(prodNuevo);
+                await saveProds(getProducts);
+                    return console.log(`Nueva fruta agregada con exito. La fruta es: ${prodNuevo.title}`);
+        }
+        getById = async (idBuscado) => {
+            const getProducts = await getProds();
+            const findIndice = getProducts.findIndex((fruit) => fruit.id === idBuscado);
+                if( findIndice < 0) {
+                    findIndice == null;
+                    console.log("FIND ES NULL");
+                };
+                return getProducts[findIndice]
+        }   
+        deleteById = async (idBuscado) => {
+            const getProducts = await getProds();
+            const findIndice = getProducts.findIndex((fruit) => fruit.id === idBuscado);
+            
+                if( findIndice < 0) { // (1)
+                    return; 
+                } 
+            
+            getProducts.splice(findIndice, 1);
+                await saveProds(getProducts);
+                    
+        }
+        deleteAll = async () => {
+            return await saveProds([]);
+        }   
+    }
+    const contenedor = new Contenedor ('./main.json');
 
-app.get( "/products", (request, response) => {
-    response.send(getProds());
-    console.log(getProds());
+app.get( "/products", async (request, response) => {
+    const products = await contenedor.getAll();
+    const showProducts = products.map(( product ) => {
+        return `Product: ${product.title}, Price: ${product.price}, ID: ${product.id}`
+    })
+    response.send( showProducts);
 });
 
-app.get( "/random-prod", (request, response) => {
-    response.send( );
-});
+    const randomNumber = (min, max) => {
+        return Math.floor( Math.random() * (max - min) + min );
+    }
+
+app.get( "/prod-random", async (request, response) => {
+    const id = randomNumber( 1, 4 );
+    const product = await contenedor.getById(id);
+    const showProduct = `Product: ${product.title}, Price: ${product.price}, ID: ${product.id}`
+        
+    response.send(showProduct);
+}); 
 
 const server = app.listen(PORT, () => {
     console.log(`Servidor HTTP escuchando en el puerto ${server.address().port}`);
