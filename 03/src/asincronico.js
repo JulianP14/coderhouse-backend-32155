@@ -70,11 +70,10 @@ class Contenedor  {
     deleteById = async (idBuscado) => {
         const getProducts = await getProds();
         const findIndice = getProducts.findIndex((fruit) => fruit.id === idBuscado);
-        /* 
             if( findIndice < 0) { // (1)
                 return; 
             } 
-        */
+            
         getProducts.splice(findIndice, 1);
             await saveProds(getProducts);
                 

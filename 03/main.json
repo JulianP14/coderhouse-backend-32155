@@ -13,5 +13,25 @@
 		"title": "Pera",
 		"price": 130,
 		"id": 3
+	},
+	{
+		"title": "Sandia",
+		"price": 350,
+		"id": 4
+	},
+	{
+		"title": "Naranja",
+		"price": 200,
+		"id": 5
+	},
+	{
+		"title": "Melon",
+		"price": 275,
+		"id": 6
+	},
+	{
+		"title": "Frutilla",
+		"price": 500,
+		"id": 7
 	}
 ]

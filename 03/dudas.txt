@@ -1,5 +1,11 @@
 Hola Lean, te dejo aca unas dudas que tengo
 
-1. En el grupo de Whatsapp deje una foto, si la necesitas te la paso por algun lado porque no es solo la foto. Tenia unas cuestiones con respecto a la organizacion del codigo en un servidor
-2. Cuando ejecuto la f() "getProds" que me retorna el [], solo me devuelve un {} vacio en el servidor (postman) y en consola de la terminal me dice que esta esperando que se resuelva la promesa. Lo que no sabria es como resolverla para que salga el [] con los prods 
-3. En la consigna dice que trabajemos con la clase constructora Contenedor que ya vinimos usando. Mi duda es, tengo que pegarla completa con todo el codigo de la anterior en esta nueva entrega? 
+0. En el grupo de Whatsapp deje una foto, si la necesitas te la paso por algun lado porque no es solo la foto. Tenia unas cuestiones con respecto a la organizacion del codigo en un servidor
+
+1. Linea 77 y 89
+    Tuve que agregarle el "async" y "await" para que me funcione porque en la APP Postman me retornaba un {} vacio (en el caso de la 77) y en la consola con NODEMON me figuraba una promesa pendiente. 
+    ¿Para que esto funcione sin asincronia, deberia escribir TODO lo que es la clase constructora y sus funciones de manera sincrona, como asi tambien el codigo de las "app.get"?
+ 
+2. Linea 93
+    Cuando seteo el maximo para la f() "randomNumber", tendria que hacerlo como lo hice para despues extraer el ".length" y sumarle +1?, O tengo otra manera mas rapida y mejor para hacerlo? 
+            

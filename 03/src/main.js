@@ -74,25 +74,27 @@ const ruta = path.resolve( __dirname, "../main.json");
         }   
     }
     const contenedor = new Contenedor ('./main.json');
-
-app.get( "/products", async (request, response) => {
+app.get( "/products", async (request, response) => { // (1)
     const products = await contenedor.getAll();
     const showProducts = products.map(( product ) => {
         return `Product: ${product.title}, Price: ${product.price}, ID: ${product.id}`
     })
-    response.send( showProducts);
+    response.send( showProducts );
 });
+
 
     const randomNumber = (min, max) => {
         return Math.floor( Math.random() * (max - min) + min );
     }
+app.get( "/prod-random", async (request, response) => { // (1)
+    const data = await fs.promises.readFile( ruta, 'utf-8');
+            const productsArray = JSON.parse(data);
 
-app.get( "/prod-random", async (request, response) => {
-    const id = randomNumber( 1, 4 );
-    const product = await contenedor.getById(id);
-    const showProduct = `Product: ${product.title}, Price: ${product.price}, ID: ${product.id}`
+    const id = randomNumber( 1, productsArray.length + 1 ); // (2)
+    const randomProduct = await contenedor.getById(id);
+    const showRandomProduct = `Product: ${randomProduct.title}, Price: ${randomProduct.price}, ID: ${randomProduct.id}`
         
-    response.send(showProduct);
+    response.send(showRandomProduct);
 }); 
 
 const server = app.listen(PORT, () => {
