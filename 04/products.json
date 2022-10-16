@@ -1,0 +1,43 @@
+[
+	{
+		"title": "Banana",
+		"price": 150,
+		"thumbnail": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Bananas.jpg",
+		"id": 1
+	},
+	{
+		"title": "Manzana",
+		"price": 250,
+		"thumbnail": "https://i.blogs.es/e44dc0/manzana/450_1000.webp",
+		"id": 2
+	},
+	{
+		"title": "Pera",
+		"price": 130,
+		"thumbnail": "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/26.jpg",
+		"id": 3
+	},
+	{
+		"title": "Sandia",
+		"price": 350,
+		"thumbnail": "https://frutasolivar.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/07/31606320_s-1.jpg.webp",
+		"id": 4
+	},
+	{
+		"title": "Naranja",
+		"price": 200,
+		"thumbnail": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/naranja-portada-1657997149.jpg",
+		"id": 5
+	},
+	{
+		"title": "Melon",
+		"price": 275,
+		"thumbnail": "https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/migrated/melon.jpg",
+		"id": 6
+	},
+	{
+		"title": "Palta",
+		"price": 160,
+		"thumbnail": "https://hiperlibertad.vteximg.com.br/arquivos/ids/168488-1000-1000/PALTA-HASS-X-UN-1-10016.jpg?v=637353115999530000"
+	}
+]
