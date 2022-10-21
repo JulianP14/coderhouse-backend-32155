@@ -34,25 +34,25 @@ rutaProducts.get("/:id", async (request, response) => { // Ver un prod especfico
 
 rutaProducts.post("/", async (request, response) => { // Crear prod
     const data = request.body;
-    console.log(data);
+        console.log(data);
 
-    const { title, price, thumbnail, id } = data;  //DESESTRUCTURACION
-        if( !title || !price || !thumbnail || !id ){ //(1)    // VALIDACION (PRIMERO SE VALIDA ANTES DE CREAR EL USUARIO)
+    const fileData = await fs.readFile( filePath, "utf-8" );
+        const usuarios = JSON.parse( fileData );
+
+    const { title, price } = data;  //DESESTRUCTURACION
+        if( !title || !price){ //(1)    // VALIDACION (PRIMERO SE VALIDA ANTES DE CREAR EL USUARIO)
             return response.status(400).json({
                 msg: "Campos Invalidos"
             })
         }
-
+    
     const nuevoUsuario = {
-        title,
-        price,
+        title: title,
+        price: price,
         thumbnail,
-        id
+        id: usuarios.length + 1
     }
 
-
-    const fileData = await fs.readFile( filePath, "utf-8" );
-        const usuarios = JSON.parse( fileData );
     usuarios.push(nuevoUsuario);
 
     await fs.writeFile( filePath, JSON.stringify( usuarios ));
@@ -82,14 +82,17 @@ rutaProducts.put("/:id", async (request, response) => { // Modificar prod // (2)
         })
     }
 
+    
     const usuarioActualizado = {
         title,
         price,
         thumbnail,
         id: usuarios[indice].id // (1)
     }
-
+    
     usuarios.splice(indice, 1, usuarioActualizado);
+    
+    await fs.writeFile( filePath, JSON.stringify( usuarios ));
 
     //Actualizar
     response.json({
