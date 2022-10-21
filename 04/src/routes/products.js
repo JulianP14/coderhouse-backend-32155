@@ -6,15 +6,23 @@ const filePath = path.resolve(__dirname, "../../products.json");
 const fs = require ( 'fs/promises' );
 
 rutaProducts.get("/", async (request, response) => { // Ver todos los prods
-    const fileData = await fs.readFile( filePath, "utf-8" );
+    try{
+        const fileData = await fs.readFile( filePath, "utf-8" );
         const usuarios = JSON.parse( fileData );
     response.json({
         data: usuarios
     });
+
+    } catch (error) {
+        return response.status(404).json({
+            msg: "Error", error
+        });
+    }
 });
 
 rutaProducts.get("/:id", async (request, response) => { // Ver un prod especfico
-    const id = request.params.id;
+    try {
+        const id = request.params.id;
         
     const fileData = await fs.readFile( filePath, "utf-8" );
         const usuarios = JSON.parse( fileData );
@@ -30,10 +38,17 @@ rutaProducts.get("/:id", async (request, response) => { // Ver un prod especfico
         msg: `Devolviendo usuario con ID ${id}`,
         data: usuarios[indice]
     });
+
+    } catch (error) {
+        return response.status(404).json({
+            msg: "Error", error
+        });
+    }
 });
 
 rutaProducts.post("/", async (request, response) => { // Crear prod
-    const data = request.body;
+    try {
+        const data = request.body;
         console.log(data);
 
     const fileData = await fs.readFile( filePath, "utf-8" );
@@ -49,7 +64,7 @@ rutaProducts.post("/", async (request, response) => { // Crear prod
     const nuevoUsuario = {
         title: title,
         price: price,
-        thumbnail,
+        // thumbnail,
         id: usuarios.length + 1
     }
 
@@ -59,11 +74,18 @@ rutaProducts.post("/", async (request, response) => { // Crear prod
 
     response.json({
         msg: "ok"
-    })
+    });
+
+    } catch (error) {
+        return response.status(404).json({
+            msg: "Error", error
+        });
+    }
 })
 
 rutaProducts.put("/:id", async (request, response) => { // Modificar prod // (2)
-    const id = request.params.id;
+    try {
+        const id = request.params.id;
     const { title, price, thumbnail } = request.body;
     
     const fileData = await fs.readFile( filePath, "utf-8" );
@@ -99,10 +121,17 @@ rutaProducts.put("/:id", async (request, response) => { // Modificar prod // (2)
         msg: `Modificando objeto con id ${id}`,
         data: usuarioActualizado,
     })
+
+    } catch (error) {
+        return response.status(404).json({
+            msg: "Error", error
+        });
+    }
 });
 
 rutaProducts.delete("/:id", async (request, response) => { // Borrar prod
-    const id = request.params.id;
+    try {
+        const id = request.params.id;
     const fileData = await fs.readFile( filePath, "utf-8" );
     const usuarios = JSON.parse( fileData );
 
@@ -120,7 +149,14 @@ rutaProducts.delete("/:id", async (request, response) => { // Borrar prod
         //Borrar
         response.json({
             msg: `Borrando objeto con id ${id}`,
-        });       
+        });
+    } catch (error) {
+        return response.status(404).json({
+            msg: "Error", error
+        });
+    }     
+        
+        
 });
 
 module.exports = rutaProducts;

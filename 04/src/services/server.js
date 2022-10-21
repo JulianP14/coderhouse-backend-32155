@@ -1,5 +1,5 @@
 const express = require ('express');              // (1)
-const path = require ('path');
+// const path = require ('path');
 const rutaPrincipal = require("../routes/index");      // (5)
 
 const app = express();                              // (2) 
@@ -7,8 +7,7 @@ const app = express();                              // (2)
 app.use( express.json() );                          // (3) 
 app.use( express.urlencoded({ extended: true }));   // (3) 
 
-const publicPath = path.resolve(__dirname, "../../public")
-app.use(express.static(publicPath));
+app.use(express.static("public"));
 app.use("/api", rutaPrincipal);                        // (4) (4.b)
 
 module.exports = app;
