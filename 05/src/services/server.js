@@ -1,17 +1,19 @@
-const { json } = require("express");
 const express = require ("express"); // (1)
 const {engine} = require("express-handlebars");
+const rutaPrincipal = require("../routes/index");  
+
 
 const path = require("path");
 const app = express(); // (2) 
     app.use(express.json());    // (3) 
     app.use(express.urlencoded({extended:true}));   // (3) 
     app.use(express.static("public"));
+    app.use("/api", rutaPrincipal);  
 
 const viewFoldersPath = path.resolve(__dirname, "../../views"); // (9)
     // console.log(viewFoldersPath)
 
-const layoutFoldersPath = path.resolve `${viewFoldersPath+"/layouts"}`; // (8)
+const layoutFoldersPath = path.resolve `${viewFoldersPath+"/layouts"}`;  // (8)
 const partialFolderPath = path.resolve `${viewFoldersPath+"/partials"}`;
 const defaultLayoutPath = path.resolve `${layoutFoldersPath+"/index.hbs"}`;
 
@@ -45,21 +47,36 @@ app.get("/", (request, response) => {
     */
 });
 
-app.get("/products", (request, response) => {
-    const dataDinamica = {
-        persona:
-            {nombre: "Carlitos", apellido: "Tevez"},
+app.get("/products", async (request, response) => {
+    // const dataDinamica = {
+    //     persona:
+    //         {nombre: "Pepe", apellido: "Argento"},
         
-        products: [
-            {name: "pate", price: 250},
-            {name: "cafe", price: 550},
-            {name: "harina", price: 100},
-            {name: "palmitos", price: 320}
-        ],
-        showProds: true
-    };
+    //     products: [
+    //         {name: "pate", price: 250},
+    //         {name: "cafe", price: 550},
+    //         {name: "harina", price: 100},
+    //         {name: "palmitos", price: 320}
+    //     ],
+    //     showProds: true
+    // };
+    try {
+        const fs = require ( 'fs/promises' );
+        const filePath = path.resolve(__dirname, "../../products.json");
+        const fileData = await fs.readFile( filePath, "utf-8" );
+        const dataProds = JSON.parse( fileData );
+            // console.log(dataProds);
+
+
+        response.render("products", dataProds )
+    } catch (error) {
+        return error, "Error";
+    }
     
-    response.render("products", dataDinamica )
+});
+
+app.get("/form", (request, response) => {
+    response.render("form")
 })
 
 
