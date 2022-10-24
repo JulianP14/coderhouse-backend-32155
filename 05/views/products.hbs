@@ -1,0 +1,9 @@
+<h1>Lista de Productos de {{persona.nombre}} {{persona.apellido}}:</h1>
+
+    {{#if showProds}}
+    <ul>
+        {{#each products}}
+            <li>{{this.name}} {{this.price}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
