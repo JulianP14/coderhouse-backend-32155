@@ -48,31 +48,17 @@ app.get("/", (request, response) => {
 });
 
 app.get("/products", async (request, response) => {
-    // const dataDinamica = {
-    //     persona:
-    //         {nombre: "Pepe", apellido: "Argento"},
-        
-    //     products: [
-    //         {name: "pate", price: 250},
-    //         {name: "cafe", price: 550},
-    //         {name: "harina", price: 100},
-    //         {name: "palmitos", price: 320}
-    //     ],
-    //     showProds: true
-    // };
     try {
         const fs = require ( 'fs/promises' );
         const filePath = path.resolve(__dirname, "../../products.json");
         const fileData = await fs.readFile( filePath, "utf-8" );
         const dataProds = JSON.parse( fileData );
-            // console.log(dataProds);
-
+            console.log(typeof(dataProds));
 
         response.render("products", dataProds )
     } catch (error) {
         return error, "Error";
     }
-    
 });
 
 app.get("/form", (request, response) => {

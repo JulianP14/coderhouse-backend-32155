@@ -9,8 +9,9 @@
     {{/if}} --}}
 
     <ul>
-        {{#each dataProds}}
-            <li>{{this}}</li>
-            <li>{{this.title}} {{this.price}}</li>
-        {{/each}}
+        {{ dataProds}}
     </ul>
+
+    <div>
+        <button><a href="/form">Agregar Producto</a></button>
+    </div>
