@@ -9,8 +9,11 @@
     {{/if}} --}}
 
     <ul>
-        {{ dataProds}}
+        {{#each dataProds}}
+            <li>{{this.title}} {{this.price}}</li>
+        {{/each}}
     </ul>
+    Prueba
 
     <div>
         <button><a href="/form">Agregar Producto</a></button>

@@ -9,9 +9,10 @@ rutaProducts.get("/", async (request, response) => { // Ver todos los prods
     try{
         const fileData = await fs.readFile( filePath, "utf-8" );
         const prods = JSON.parse( fileData );
-    response.json({
-        data: prods
-    });
+        console.log(prods)
+        response.json({
+            data: prods
+        });
 
     } catch (error) {
         return response.status(404).json({

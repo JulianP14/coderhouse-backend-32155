@@ -28,12 +28,13 @@ app.engine("hbs", engine({ //(7)
     partialsDir: partialFolderPath
 }));
 
+
 // ENDPOINTS
 app.get("/test", (request, response) => {
     response.json({
         msg: "ok"
-    })  
-});
+    })
+})
 
     // CHEQUEAR QUE TODO ESTE BIEN 
 app.get("/", (request, response) => {
@@ -47,23 +48,23 @@ app.get("/", (request, response) => {
     */
 });
 
+app.get("/form", (request, response) => {
+    response.render("form")
+})
+
 app.get("/products", async (request, response) => {
     try {
         const fs = require ( 'fs/promises' );
         const filePath = path.resolve(__dirname, "../../products.json");
         const fileData = await fs.readFile( filePath, "utf-8" );
         const dataProds = JSON.parse( fileData );
-            console.log(typeof(dataProds));
+            console.log(dataProds[1]);
 
-        response.render("products", dataProds )
+        response.render("products", {dataProds} )
     } catch (error) {
         return error, "Error";
     }
 });
-
-app.get("/form", (request, response) => {
-    response.render("form")
-})
 
 
 module.exports = app;
