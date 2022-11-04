@@ -1,7 +1,7 @@
 const socketIo = require("socket.io");
-const moment = require("moment");
 const { ProdControl } = require("../controllers/prodControl");
 const { MgsControl } = require ("../controllers/mensajesProd");
+const moment = require("moment");
 let io;
 
 const initWsServer = (httpServer) => {
@@ -11,7 +11,7 @@ const initWsServer = (httpServer) => {
             
             socket.on("Producto Agregado", async (prod) => {
                 console.log("Se agrega producto");
-                await ProdControl.save(prod) // CLASE DE PROD. AGREGARLA
+                await ProdControl.save(prod) 
                 socket.broadcast.emit("Agregar Producto", (prod))
             });
 

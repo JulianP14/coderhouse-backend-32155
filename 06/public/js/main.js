@@ -1,14 +1,14 @@
 window.addEventListener("load", () => {
 
-const form = document.getElementById("form");
+const formProductos = document.getElementById("formProductos");
 const tabla = document.querySelector('#tablaBody');
-const formChat = document.querySelector("#chat-form");
+const formChat = document.querySelector("#formChat");
 const tablaChat = document.querySelector('#tabla-chat');
 //contenidoCarga
 
 const socket = io();
 
-form.addEventListener("submit", (e) => {
+formProductos.addEventListener("submit", (e) => {
     e.preventDefault();
     const [titleFormSubmit, priceFormSubmit, thumbnailFormSubmit] = document.querySelectorAll(".formProd"); //contenidoCarga
     const prod = {
@@ -19,7 +19,7 @@ form.addEventListener("submit", (e) => {
 
     addProdToTable(prod);
     socket.emit("Producto Agregado", prod);
-    form.reset();
+    formProductos.reset();
 });
  
 socket.on("Agregar Producto", (dataProd) => {
