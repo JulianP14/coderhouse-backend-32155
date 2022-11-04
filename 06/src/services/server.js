@@ -1,14 +1,18 @@
 const express = require("express");
-const {engine} = require("express-handlebars");
 const http = require("http");
+const {engine} = require("express-handlebars");
 const path = require("path");
-const rutaPrincipal = require("../routes/index"); 
+const rutaPrincipal = require("../routes/api/index"); 
+const rutaPages = require ("../routes/pages/index")
+const { initWsServer } = require("./socket");
+
 const app = express(); 
 const httpServer = http.Server(app);
     app.use(express.json());   
     app.use(express.urlencoded({extended:true})); 
-    app.use(express.static("public"));
+    app.use(express.static('public'));
     app.use("/api", rutaPrincipal); 
+    app.use("/", rutaPages);
 
 // HBS seteo
     const viewFoldersPath = path.resolve(__dirname, "../../views"); 
@@ -26,21 +30,17 @@ const httpServer = http.Server(app);
         defaultLayout: defaultLayoutPath,
         partialsDir: partialFolderPath
     }));
-    
 
-// ENDPOINTS
-    app.get("/", async (request, response) => {
-        try {
-            const fs = require ( 'fs/promises' );
-            const filePath = path.resolve(__dirname, "../../products.json");
-            const fileData = await fs.readFile( filePath, "utf-8" );
-            const dataProds = JSON.parse( fileData );
-            response.render("main", {dataProds})
-        } catch (error) {
-            return error, "Error";
-        }
-        
-    })
+initWsServer(httpServer); //Conexion al socket
+    
+    app.use((error, request, response, next) => {
+        const status = error.status || 500;
+        const message = error.message || "Internal Server Error";
+
+        response.status(status).json({
+            message, stack: error.stack
+        });
+    });
     
 module.exports = httpServer;
 

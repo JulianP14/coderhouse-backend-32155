@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Banana",
+    "price": 150,
+    "thumbnail": "https://upload.wikimedia.orwikipedia/commons/4/4c/Bananas.jpg"
+  },
+  {
+    "title": "Manzana",
+    "price": 250,
+    "thumbnail": "https://i.blogs.es/e44dc0/manzan450_1000.webp"
+  },
+  {
+    "title": "Limon",
+    "price": 100,
+    "thumbnail": "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/26.jpg"
+  },
+  {
+    "title": "Sandia",
+    "price": 350,
+    "thumbnail": "https://frutasolivar.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/07/31606320_s-1.jpg.webp"
+  },
+  {
+    "title": "Naranja",
+    "price": 200,
+    "thumbnail": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/naranja-portada-1657997149.jpg"
+  },
+  {
+    "title": "Melon",
+    "price": 275,
+    "thumbnail": "https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/migrated/melon.jpg"
+  },
+  {
+    "title": "Aceituna",
+    "price": 1500,
+    "thumbnail": "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/26.jpg"
+  }
+]

@@ -1,61 +1,37 @@
-const io = require("socket.io");
-const webSocketServer = io(httpServer);
-const path = require("path");
-const formatMsg = require("../utils/message");
-const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("../utils/users");
+const socketIo = require("socket.io");
+const moment = require("moment");
+const { ProdControl } = require("../controllers/prodControl");
+const { MgsControl } = require ("../controllers/mensajesProd");
+let io;
 
-webSocketServer.on("connection", async (socket) =>  {
-    console.log("Se acaba de conectar un cliente");
-    console.log("ID SOCKET SERVER:", socket.id);
-    console.log("ID SOCKET CLIENT:", socket.client.id);
+const initWsServer = (httpServer) => {
+    io = socketIo(httpServer);
+        io.on("connection", (socket) => {
+            console.log("Nueva conexion establecida");
+            
+            socket.on("Producto Agregado", async (prod) => {
+                console.log("Se agrega producto");
+                await ProdControl.save(prod) // CLASE DE PROD. AGREGARLA
+                socket.broadcast.emit("Agregar Producto", (prod))
+            });
 
+            socket.on("Envio Mensaje", async (data) => {
+                console.log("Cliente envia un mensaje");
+                const now = moment().format("DD/MM/YYYY HH:mm:ss");
+                data.fecha = now;
+                
+                // Save msg
+                MgsControl.save(data); // CLASE DE PROD.
 
-    const filePath = path.resolve(__dirname, "../../products.json");
-    const fs = require ( 'fs/promises' );
-    const fileData = await fs.readFile( filePath, "utf-8" ); 
-        const prods = JSON.parse(fileData);
+                // Send msd
+                socket.broadcast.emit("Mensaje Recibido", (data));
+            });
+        });
+        return io;
+};
 
-    
-    socket.on("Producto creado:",(data) => {
-        console.log(`El cliente ${socket.client.id} me mando un mensaje:`);
-        console.log(data);
-    socket.emit("Respuesta", { recibido: "ok" })
+const getWsServer = () => {
+    return io;
+}
 
-    socket.emit("Envio de datos", prods )
-    }) //1.32
-
-/////////////////// En proceso ////////////////////////
-
-    /* SOCKET PARA CHAT */
-    socket.on("joinRoom", ({ username, room }) => {
-        const user = userJoin( socket.id, username, room );
-        socket.join(user.room);
-
-        //Sal. new user
-        socket.emit("message", formatMsg("Bienvenido"));
-
-        //Broadcast user se conecta
-        socket.broadcast.to(user.room).emit("message",formatMsg(`${user.username} se ha unido`));
-
-        // Envia info del usuario y room
-        io.to(user.room).emit("roomUsers",{room: user.room, users: getRoomUsers(user.room)})
-
-    });
-
-        // Escucha mensaje
-    socket.on("chatMessage", (msg) => {
-        const user = getCurrentUser(socket.id);
-        io.to(user.room).emit("message", formatMsg(user.username, msg));
-    });
-
-        // Escucha desconexion cliente
-    socket.on("disconnect", () => {
-        const user = userLeave(socket.id);
-            if(user) {
-                io.to(user.room).emit("message", formatMsg(`${user.username} se ha ido del chat`));
-            };
-
-        io.to(user.room).emit("roomUsers",{room: user.room, users: getRoomUsers(user.room)})
-    })
-
-});
+module.exports = { initWsServer, getWsServer };
