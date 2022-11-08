@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2022-11-08T14:18:59.616Z",
+    "prods": [
+      {
+        "title": "Banana",
+        "price": 300,
+        "photo": "https://upload.wikimedia.orwikipedia/commons/4/4c/Bananas.jpg",
+        "description": "Banana del Ecuador",
+        "stock": 20,
+        "id": 1,
+        "code": "6d72523d-b515-4840-8063-2225bef4efc4",
+        "timestamp": "2022-11-08T14:05:02.037Z"
+      },
+      {
+        "title": "Pera",
+        "price": 250,
+        "photo": "http://www.frutas-hortalizas.com/img/fruites_verdures/presentacio/26.jpg",
+        "description": "Peras de Entre Rios",
+        "stock": 20,
+        "id": 3,
+        "code": "28866d72-4498-80e2-9e3d-0a254jd1eq63",
+        "timestamp": "2022-11-08T14:10:54.083Z"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "timestamp": "2022-11-08T14:55:07.896Z",
+    "prods": [
+      {
+        "title": "Manzana",
+        "price": 280,
+        "photo": "https://i.blogs.es/e44dc0/manzan450_1000.webp",
+        "description": "Manzana de Neuquen",
+        "stock": 15,
+        "id": 2,
+        "code": "2886a254-e2be-4498-9e3d-05040ec1e4b0",
+        "timestamp": "2022-11-08T14:10:54.083Z"
+      },
+      {
+        "title": "Banana",
+        "price": 300,
+        "photo": "https://upload.wikimedia.orwikipedia/commons/4/4c/Bananas.jpg",
+        "description": "Banana del Ecuador",
+        "stock": 20,
+        "id": 1,
+        "code": "6d72523d-b515-4840-8063-2225bef4efc4",
+        "timestamp": "2022-11-08T14:05:02.037Z"
+      }
+    ]
+  }
+]
