@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <div>
+            <header>
+                <h4><i>Form de Productos:</i></h4>
+            </header>
+            <form id="formProductos" action="{{route}}" method="post">
+                <ul>
+                    <div>
+                        <label for="title">Title</label>
+                        <input class="formProd" type="text" id="title" name="title" required>
+                    </div>
+                    <div>
+                        <label for="price">Price</label>
+                        <input class="formProd" type="number" step="any" id="price" name="price" required>
+                    </div>
+                    <div>
+                        <label for="thumbnail">Thumbnail</label>
+                        <input class="formProd" type="text" id="thumbnail" name="thumbnail" required>
+                    </div>
+                    <div>
+                        <button type="submit">Agregar</button>
+                    </div>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

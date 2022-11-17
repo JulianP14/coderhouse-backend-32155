@@ -1,0 +1,33 @@
+<div>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h4><i>Chat</i></h4>
+            <form id="formChat">
+                <div>
+                    <div>
+                        <div>Ingrese su correo</div>
+                        <input type="text" class="form-chat" id="usuario" placeholder="correo" required>
+                    </div>
+                </div>
+        
+                <main>
+                    <div id="tabla-chat">
+                        {{#each msgs}}
+                            <div>
+                                <p class="meta">{{this.user}}<span> {{this.fecha}}</span></p>
+                                <p class="text">
+                                    {{this.msg}}
+                                </p>
+                            </div>
+                        {{/each}}
+                    </div>
+                </main>
+                    <div>
+                        <input id="msg" type="text" placeholder="Enter Message" class="form-chat" required
+                            autocomplete="on" />
+                        <input type="submit" id="chat-form" value="Send Message">
+                    </div>
+            </form>
+        </header>
+    </div>
+</div>
