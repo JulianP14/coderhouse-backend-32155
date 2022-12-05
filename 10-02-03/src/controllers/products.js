@@ -146,10 +146,10 @@ export const deleteProductById = async (req, res) => {
     }
 };
 
-const findLastId = async () => {
+export const findLastId = async () => {
     let lastDocument = await ProductsModel.sort({ id: -1 }).limit(1);
     let lastId = lastDocument.id;
     return lastId;
 };
 
-export default router;
+

@@ -1,7 +1,7 @@
 import { CartsModel } from "../models/cart.js";
 import { ProductsModel } from "../models/products.js";
 import { validationResult } from "express-validator";
-import { formatTimeStamp } from "../utils/format.js";
+import { formatTime } from "../utils/format.js";
 
 export const getProductsInCart = async (req, res) => {
     try {
@@ -33,7 +33,7 @@ export const createCart = async (req, res) => {
     try {
         let lastId = findLastId();
         lastId + 1;
-        let timestamp = formatTimeStamp();
+        let timestamp = formatTime();
         let products = [];
 
         await CartsModel.create({
@@ -175,10 +175,9 @@ export const deleteProductInCartById = async (req, res) => {
     }
 };
 
-const findLastId = async () => {
+export const findLastId = async () => {
     let lastDocument = await CartsModel.sort({ id: -1 }).limit(1);
     let lastId = lastDocument.id;
     return lastId;
 };
 
-export default router;
