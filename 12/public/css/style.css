@@ -1,0 +1,12 @@
+h1 {
+    color: blue;
+}
+
+label {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.container-div {
+    min-height: 100vh;
+}
