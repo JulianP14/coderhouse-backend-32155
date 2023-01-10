@@ -1,0 +1,6 @@
+Hola Lean.
+Se que lo que entrego no es lo que realmente deberia estar entregando, pero me comi la cabeza toda la semana y no pude resolver el tema. Tuve mil errores, si usaba imports no me dejaba utilizar algunos archivos de HBS. No se, realmente un comedero de cabeza. Lo peor de todo es que entiendo, mas o menos, como es el tema de la logica. Reemplazar por una base de datos el guardado de los archivos, pero no estaria funcionando por ningun lado.
+
+Por eso queria preguntarte si hay alguna manera que se pueda hacer todo esto lo mas sencillo posible. Esto, como lo estoy entregando, funciona, pero es super basico, ni siquiera cumple porque no estoy utilizando el tema de websocket de la entrega 06. Pero es lo unico que puedo hacer que funcione. 
+
+Si  me tiras un centro de como seguir o cuales serian los mejores pasos para continuar, te agradeceria un monton.

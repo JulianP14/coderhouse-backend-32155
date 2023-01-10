@@ -1,0 +1,12 @@
+(1) Linea 40 y 89 ./src/routes/products.js 
+    Me gustaria que en el metodo POST (Linea 40) fuese posible (como lo es en el PUT en la linea 89), que el ID se asigne automaticamente a la hora de crear un producto. Como se puede hacer?
+
+(2) Linea 65 ./src/routes/products.js 
+    En consola de POSTMAN esta OK, pero no modifica el archivo "products.json". Por lo que veo al revisar el código es que solo está usando la f() "fs" para leer y no para modificar. Puede ser que tenga algo que ver eso, o estoy haciendo algo mal que no veo? 
+        A) Modificando con el PUT: https://imgur.com/Hr6zJYZ
+        B) Haciendo un GET del archivo despues de modificarlo: https://imgur.com/IX4eyve 
+
+(3) En public/index.html no logro hacer que funcione el form. Me tira un "Your file couldn't be accessed. It may have been removed or deleted". No tengo idea cual podria ser el error
+ 
+
+Te deje bien claras (con routes  y lineas) las dudas porque hay comentarios a lo largo del codigo que me van ayudando a entender como funciona y se interconecta todo el codigo. Porque me esta costando captarlo sin tener algunas cosas escritas 

@@ -1,0 +1,28 @@
+{{#if show}}
+<div id="viewContentDiv">
+    <header id="VcD-header">
+        <h4 id="Vc-Dh-h4"><i>Lista de Productos:</i></h4>
+    </header>
+    <table id="tabla">
+        <thead>
+                <tr class="VcD-dDiv">
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+        </thead>
+        <tbody id="tablaBody">
+            {{#each prods}}
+            <tr class="tB-Div">
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td><img src="{{this.thumbnail}}" width="50" height="50"></td>
+            </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{else}}
+No se encontraron productos
+{{/if}}

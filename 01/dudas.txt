@@ -1,0 +1,33 @@
+1) Tuve una idea que no pude concretar. Quise crear un [] de animales, por ejemplo:
+
+        const animales = ["Perro", "Gato", "Pajaro"] 
+
+    Al cual hacerle una iteración y guardar el valor de c/ iteración para usar eso como parámetro en " addMascota() ", en vez de hacer algo tan básico como declarar 3 variables y pasarselas al " .push() ". 
+    Lo que desconozco es si esto es posible, porque probé con muchos métodos y ninguno salió como esperaba.
+
+2) ¿Está bien la estructura del Constructor?
+
+3) ¿Está bien declarada la  instancia de la clase? 
+
+4) Si ves algo que se puede corregir, que no está bien. o simplemente algo que haga más eficiente el código, por favor, comentamelo. Es algo sencillo pero me costó mucho hacerlo, no sé porqué. 
+
+
+Gracias.
+
+
+
+. 2) No es necesario declarar un [] vacio como parametro para el Constructor. O no se declara, o se declara un nombre y se le asigna un [] vacio ( "books = []" )
+
+. 3) O lo dejo vacio  y en la declaracion de la instancia incluyo [] o le pongo books = [] y en la declaracion no le dejo los []
+
+. 1) Es mejor usar un [] de mascotas, iterarlo con un "forEach()" y a c/u de los valores del [] pasarselo como parametro a la f() "addMascota", mientras que tambien se declara la f() "user1.addMascota(mascota)" desde el []
+        
+    const mascotas = ["Perro", "Gato", "Tortuga"];
+        mascotas.forEach((mascota) => {
+            return user1.addMascota(mascota)
+        })
+
+    addMascota (mascota) {
+        this.pets.push(mascota); 
+        return this.pets;
+    }
